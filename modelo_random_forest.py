@@ -1,4 +1,4 @@
-"""Clasifica candidatos HTRU2 con Random Forest y registra las fases KDD."""
+"""Entrena y evalúa Random Forest para HTRU2 siguiendo las tareas de CRISP-ML(Q)."""
 
 from __future__ import annotations
 
@@ -97,21 +97,21 @@ def main() -> None:
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-    # KDD 1 y 2: selección de HTRU2 y revisión inicial de su calidad.
+    # CRISP-ML(Q), comprensión de datos: carga el HTRU2 seleccionado y revisa su calidad.
     data = pd.read_csv(DATA_FILE)
     quality = validate_data(data)
     data = data[FEATURES + [TARGET]].astype(float)
     data[TARGET] = data[TARGET].astype(int)
 
-    print("=== KDD: selección y revisión de datos ===")
+    print("=== CRISP-ML(Q): comprensión y revisión de datos ===")
     print(f"Archivo: {DATA_FILE}")
     print(f"Registros: {quality['filas']:,}")
     print(f"Filas duplicadas exactas (solo auditadas): {quality['filas_duplicadas_exactas']}")
     print("Distribución de clases:")
     print(data[TARGET].value_counts().sort_index().rename(index=CLASS_NAMES).to_string())
 
-    # KDD 3: se conserva la escala original; los árboles no requieren estandarización.
-    # La partición estratificada mantiene proporciones similares de ambas clases.
+    # CRISP-ML(Q), ingeniería de datos: se definen X e y y se preparan las particiones.
+    # Se conserva la escala original; Random Forest no requiere estandarización.
     X = data[FEATURES]
     y = data[TARGET]
     X_train, X_holdout, y_train, y_holdout = train_test_split(
@@ -129,7 +129,7 @@ def main() -> None:
         stratify=y_holdout,
     )
 
-    # KDD 4: entrenamiento del clasificador supervisado.
+    # CRISP-ML(Q), ingeniería del modelo: entrenamiento del clasificador supervisado.
     model = RandomForestClassifier(
         n_estimators=300,
         class_weight="balanced",
@@ -138,7 +138,8 @@ def main() -> None:
     )
     model.fit(X_train, y_train)
 
-    # KDD 5: validación y prueba. La prueba se reserva para la evaluación final.
+    # CRISP-ML(Q), aseguramiento de calidad: evalúa validación y prueba.
+    # La prueba se reserva para informar el resultado final.
     y_validation_pred = model.predict(X_validation)
     y_test_pred = model.predict(X_test)
     y_test_probability = model.predict_proba(X_test)[:, list(model.classes_).index(1)]

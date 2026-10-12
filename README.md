@@ -1,10 +1,10 @@
-﻿# HTRU2: clasificador de candidatos a púlsar
+﻿# Clasificación de candidatos a púlsar con HTRU2
 
-Proyecto académico de clasificación binaria supervisada con Random Forest. El modelo usa las ocho características estadísticas de HTRU2 y la etiqueta `class` (0 = no púlsar, 1 = candidato a púlsar). Una predicción del modelo es una clasificación automática; no confirma por sí sola un púlsar.
+Proyecto académico de clasificación binaria supervisada con Random Forest. El modelo recibe ocho características estadísticas del conjunto HTRU2 y estima si un registro está etiquetado como no púlsar (`class = 0`) o candidato a púlsar (`class = 1`). La predicción es una ayuda de clasificación; no confirma un descubrimiento astronómico.
 
 ## Dataset
 
-Descarga HTRU2 desde [UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/372/htru2). El dataset no está incluido en este repositorio. Extrae `HTRU_2.csv` en `datos_originales/` y crea el CSV con encabezados que consume el entrenamiento:
+El dataset no está incluido en este repositorio. Descárgalo desde [UCI Machine Learning Repository: HTRU2](https://archive.ics.uci.edu/dataset/372/htru2), extrae `HTRU_2.csv` en `datos_originales/` y genera el archivo con encabezados que consume el entrenamiento:
 
 ```python
 from pathlib import Path
@@ -19,9 +19,9 @@ datos = pd.read_csv("datos_originales/HTRU_2.csv", header=None, names=columnas)
 datos.to_csv("datos_preparados/HTRU_2_con_encabezados.csv", index=False)
 ```
 
-## Instalación y ejecución en Windows
+## Instalación y ejecución
 
-Se requiere Python compatible con las dependencias de `requirements.txt`.
+Con Python compatible con las dependencias declaradas en `requirements.txt`:
 
 ```powershell
 py -m venv .venv
@@ -31,15 +31,26 @@ py graficar_roc.py
 py -m streamlit run app.py
 ```
 
-`modelo_random_forest.py` valida los datos, crea particiones estratificadas de entrenamiento, validación y prueba, entrena el clasificador y guarda resultados y el modelo en `output/modelo_random_forest/`. `graficar_roc.py` genera la curva ROC a partir de las probabilidades del conjunto de prueba. El dashboard necesita que el modelo ya se haya generado.
+El script de entrenamiento valida las columnas, los valores vacíos, los tipos numéricos, los valores finitos y las etiquetas. Después genera particiones estratificadas de entrenamiento, validación y prueba, entrena el modelo y guarda métricas, predicciones y el archivo del clasificador en `output/modelo_random_forest/`. El dashboard necesita que el modelo se haya generado antes.
 
-Para usar el dashboard, carga un CSV que contenga las ocho columnas predictoras con los nombres anteriores. La columna `class` es opcional y no se usa para predecir. La aplicación devuelve la clase estimada y la probabilidad por registro.
+Para clasificar desde el dashboard, carga un CSV con las ocho columnas predictoras y sus nombres exactos. `class` puede omitirse; si está presente, no se usa como entrada del modelo. La salida incluye la clase estimada y su probabilidad por registro.
+
+## Relación con CRISP-ML(Q)
+
+El informe adopta CRISP-ML(Q). El código no pretende ejecutar por sí solo todas sus fases; las tareas se distribuyen así:
+
+1. **Comprensión del negocio y de los datos:** el informe establece el objetivo y el alcance. El script carga el HTRU2 seleccionado y revisa su estructura y distribución de clases.
+2. **Ingeniería de datos:** el script valida los valores, separa las ocho variables predictoras de `class` y prepara las particiones estratificadas. No crea ni escala variables.
+3. **Ingeniería del modelo:** `modelo_random_forest.py` configura y entrena `RandomForestClassifier`.
+4. **Aseguramiento de calidad:** el script calcula las métricas y la matriz de confusión para validación y prueba. `graficar_roc.py` genera la curva ROC con las probabilidades de prueba; la prueba se reserva para la evaluación final.
+5. **Despliegue:** `app.py` implementa la interfaz Streamlit desplegada, descrita en el informe. La configuración de infraestructura de la VPS no se incluye aquí.
+6. **Monitoreo y mantenimiento:** no hay monitoreo automatizado ni reentrenamiento continuo; el informe los presenta como trabajo propuesto.
 
 ## Archivos principales
 
 - `modelo_random_forest.py`: validación, partición, entrenamiento y evaluación.
 - `graficar_roc.py`: generación de la curva ROC.
-- `app.py`: interfaz Streamlit para clasificar archivos CSV.
+- `app.py`: interfaz Streamlit para clasificar CSV.
 - `requirements.txt`: dependencias de Python.
 
-Los datos descargados, modelos generados, resultados y entornos locales están excluidos del repositorio.
+Los datos descargados, el entorno virtual y los resultados generados se excluyen del repositorio.

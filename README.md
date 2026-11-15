@@ -1,6 +1,16 @@
 ﻿# Clasificación de candidatos a púlsar con HTRU2
 
-Proyecto académico de clasificación binaria supervisada con Random Forest. El modelo recibe ocho características estadísticas del conjunto HTRU2 y estima si un registro está etiquetado como no púlsar (`class = 0`) o candidato a púlsar (`class = 1`). La predicción es una ayuda de clasificación; no confirma un descubrimiento astronómico.
+Proyecto académico de clasificación binaria supervisada con ocho características estadísticas de HTRU2. La versión del examen compara Random Forest original, Random Forest modificado, regresión logística y una red neuronal profunda MLP.
+
+## Versión actual del examen
+
+El código actualizado, los datos, los cuatro modelos entrenados y sus resultados están en [Examen-MC-Grupo-7](Examen-MC-Grupo-7). Su [README](Examen-MC-Grupo-7/README.md) contiene las instrucciones de instalación, entrenamiento, verificación y ejecución del dashboard.
+
+El dashboard permite seleccionar cualquiera de los cuatro modelos. La MLP aparece como opción inicial por su exactitud balanceada de validación. [Abrir el sistema web](https://htru2.bananacorp.dev).
+
+## Práctica inicial
+
+Los archivos de la raíz corresponden a la práctica inicial con Random Forest. Las instrucciones siguientes describen esa versión.
 
 ## Dataset
 

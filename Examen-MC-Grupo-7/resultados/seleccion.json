@@ -1,0 +1,450 @@
+{
+  "criterio": "exactitud balanceada de validación; desempate F1; orden declarado",
+  "modelo_elegido": "MLP profunda",
+  "configuraciones": {
+    "RF original": {
+      "bootstrap": true,
+      "ccp_alpha": 0.0,
+      "class_weight": "balanced",
+      "criterion": "gini",
+      "max_depth": null,
+      "max_features": "sqrt",
+      "max_leaf_nodes": null,
+      "max_samples": null,
+      "min_impurity_decrease": 0.0,
+      "min_samples_leaf": 1,
+      "min_samples_split": 2,
+      "min_weight_fraction_leaf": 0.0,
+      "monotonic_cst": null,
+      "n_estimators": 300,
+      "n_jobs": -1,
+      "oob_score": false,
+      "random_state": 42,
+      "verbose": 0,
+      "warm_start": false
+    },
+    "RF modificado": {
+      "bootstrap": true,
+      "ccp_alpha": 0.0,
+      "class_weight": "balanced",
+      "criterion": "gini",
+      "max_depth": 5,
+      "max_features": "sqrt",
+      "max_leaf_nodes": null,
+      "max_samples": null,
+      "min_impurity_decrease": 0.0,
+      "min_samples_leaf": 1,
+      "min_samples_split": 2,
+      "min_weight_fraction_leaf": 0.0,
+      "monotonic_cst": null,
+      "n_estimators": 150,
+      "n_jobs": -1,
+      "oob_score": false,
+      "random_state": 42,
+      "verbose": 0,
+      "warm_start": false
+    },
+    "Regresión logística": {
+      "C": 1.0,
+      "class_weight": "balanced",
+      "dual": false,
+      "fit_intercept": true,
+      "intercept_scaling": 1,
+      "l1_ratio": 0.0,
+      "max_iter": 2000,
+      "n_jobs": null,
+      "penalty": "deprecated",
+      "random_state": 42,
+      "solver": "lbfgs",
+      "tol": 0.0001,
+      "verbose": 0,
+      "warm_start": false
+    },
+    "MLP profunda": {
+      "arquitectura": [
+        8,
+        64,
+        32,
+        16,
+        1
+      ],
+      "activacion_ocultas": "relu",
+      "activacion_salida": "logística",
+      "optimizador": "Adam",
+      "tasa_aprendizaje": 0.001,
+      "batch_size": 128,
+      "alpha_L2": 0.001,
+      "semilla": 42,
+      "epocas_maximas": 200,
+      "paciencia": 30,
+      "epoca_elegida": 25,
+      "epocas_ejecutadas": 55,
+      "criterio_checkpoint": "exactitud balanceada de validación; desempate F1",
+      "pesos_muestras": "inversamente proporcionales a frecuencia de clase en entrenamiento",
+      "perdida_curvas": "entropía cruzada binaria sin ponderar, calculada al terminar cada época",
+      "objetivo_optimizador": "entropía cruzada ponderada más regularización L2",
+      "parametros_entrenables": 3201
+    }
+  },
+  "validacion": {
+    "RF original": {
+      "exactitud": 0.9776536312849162,
+      "exactitud_balanceada": 0.9237367373673737,
+      "precision": 0.8940677966101694,
+      "recall": 0.8577235772357723,
+      "f1": 0.8755186721991701,
+      "especificidad": 0.989749897498975,
+      "roc_auc": 0.970120534538679,
+      "matriz_confusion": [
+        [
+          2414,
+          25
+        ],
+        [
+          35,
+          211
+        ]
+      ]
+    },
+    "RF modificado": {
+      "exactitud": 0.97243947858473,
+      "exactitud_balanceada": 0.9427969279692796,
+      "precision": 0.8138686131386861,
+      "recall": 0.9065040650406504,
+      "f1": 0.8576923076923076,
+      "especificidad": 0.9790897908979089,
+      "roc_auc": 0.9734514011806784,
+      "matriz_confusion": [
+        [
+          2388,
+          51
+        ],
+        [
+          23,
+          223
+        ]
+      ]
+    },
+    "Regresión logística": {
+      "exactitud": 0.9743016759776536,
+      "exactitud_balanceada": 0.9401669016690166,
+      "precision": 0.8339622641509434,
+      "recall": 0.8983739837398373,
+      "f1": 0.8649706457925636,
+      "especificidad": 0.981959819598196,
+      "roc_auc": 0.9714380477138105,
+      "matriz_confusion": [
+        [
+          2395,
+          44
+        ],
+        [
+          25,
+          221
+        ]
+      ]
+    },
+    "MLP profunda": {
+      "exactitud": 0.962756052141527,
+      "exactitud_balanceada": 0.9429494294942949,
+      "precision": 0.738562091503268,
+      "recall": 0.9186991869918699,
+      "f1": 0.8188405797101449,
+      "especificidad": 0.96719967199672,
+      "roc_auc": 0.9733130664639978,
+      "matriz_confusion": [
+        [
+          2359,
+          80
+        ],
+        [
+          20,
+          226
+        ]
+      ]
+    }
+  },
+  "busqueda_ml": [
+    {
+      "experimento": "RF modificado",
+      "parametros": {
+        "bootstrap": true,
+        "ccp_alpha": 0.0,
+        "class_weight": "balanced",
+        "criterion": "gini",
+        "max_depth": 5,
+        "max_features": "sqrt",
+        "max_leaf_nodes": null,
+        "max_samples": null,
+        "min_impurity_decrease": 0.0,
+        "min_samples_leaf": 1,
+        "min_samples_split": 2,
+        "min_weight_fraction_leaf": 0.0,
+        "monotonic_cst": null,
+        "n_estimators": 150,
+        "n_jobs": -1,
+        "oob_score": false,
+        "random_state": 42,
+        "verbose": 0,
+        "warm_start": false
+      },
+      "segundos_fit": 0.6786667999986093,
+      "seleccionado": true,
+      "exactitud": 0.97243947858473,
+      "exactitud_balanceada": 0.9427969279692796,
+      "precision": 0.8138686131386861,
+      "recall": 0.9065040650406504,
+      "f1": 0.8576923076923076,
+      "especificidad": 0.9790897908979089,
+      "roc_auc": 0.9734514011806784,
+      "matriz_confusion": [
+        [
+          2388,
+          51
+        ],
+        [
+          23,
+          223
+        ]
+      ]
+    },
+    {
+      "experimento": "RF modificado",
+      "parametros": {
+        "bootstrap": true,
+        "ccp_alpha": 0.0,
+        "class_weight": "balanced",
+        "criterion": "gini",
+        "max_depth": 10,
+        "max_features": "sqrt",
+        "max_leaf_nodes": null,
+        "max_samples": null,
+        "min_impurity_decrease": 0.0,
+        "min_samples_leaf": 1,
+        "min_samples_split": 2,
+        "min_weight_fraction_leaf": 0.0,
+        "monotonic_cst": null,
+        "n_estimators": 150,
+        "n_jobs": -1,
+        "oob_score": false,
+        "random_state": 42,
+        "verbose": 0,
+        "warm_start": false
+      },
+      "segundos_fit": 0.77151010000307,
+      "seleccionado": false,
+      "exactitud": 0.9750465549348231,
+      "exactitud_balanceada": 0.9314393143931439,
+      "precision": 0.8537549407114624,
+      "recall": 0.8780487804878049,
+      "f1": 0.8657314629258517,
+      "especificidad": 0.984829848298483,
+      "roc_auc": 0.9724572245722457,
+      "matriz_confusion": [
+        [
+          2402,
+          37
+        ],
+        [
+          30,
+          216
+        ]
+      ]
+    },
+    {
+      "experimento": "RF modificado",
+      "parametros": {
+        "bootstrap": true,
+        "ccp_alpha": 0.0,
+        "class_weight": "balanced",
+        "criterion": "gini",
+        "max_depth": 15,
+        "max_features": "sqrt",
+        "max_leaf_nodes": null,
+        "max_samples": null,
+        "min_impurity_decrease": 0.0,
+        "min_samples_leaf": 1,
+        "min_samples_split": 2,
+        "min_weight_fraction_leaf": 0.0,
+        "monotonic_cst": null,
+        "n_estimators": 150,
+        "n_jobs": -1,
+        "oob_score": false,
+        "random_state": 42,
+        "verbose": 0,
+        "warm_start": false
+      },
+      "segundos_fit": 0.8841917999998259,
+      "seleccionado": false,
+      "exactitud": 0.9783985102420857,
+      "exactitud_balanceada": 0.9296292962929629,
+      "precision": 0.8916666666666667,
+      "recall": 0.8699186991869918,
+      "f1": 0.8806584362139918,
+      "especificidad": 0.989339893398934,
+      "roc_auc": 0.9738880722140555,
+      "matriz_confusion": [
+        [
+          2413,
+          26
+        ],
+        [
+          32,
+          214
+        ]
+      ]
+    },
+    {
+      "experimento": "Regresión logística",
+      "parametros": {
+        "C": 0.01,
+        "class_weight": "balanced",
+        "dual": false,
+        "fit_intercept": true,
+        "intercept_scaling": 1,
+        "l1_ratio": 0.0,
+        "max_iter": 2000,
+        "n_jobs": null,
+        "penalty": "deprecated",
+        "random_state": 42,
+        "solver": "lbfgs",
+        "tol": 0.0001,
+        "verbose": 0,
+        "warm_start": false
+      },
+      "segundos_fit": 0.032131600000866456,
+      "seleccionado": false,
+      "exactitud": 0.9683426443202979,
+      "exactitud_balanceada": 0.9350593505935059,
+      "precision": 0.7885304659498208,
+      "recall": 0.8943089430894309,
+      "f1": 0.8380952380952381,
+      "especificidad": 0.975809758097581,
+      "roc_auc": 0.9718047180471804,
+      "matriz_confusion": [
+        [
+          2380,
+          59
+        ],
+        [
+          26,
+          220
+        ]
+      ]
+    },
+    {
+      "experimento": "Regresión logística",
+      "parametros": {
+        "C": 0.1,
+        "class_weight": "balanced",
+        "dual": false,
+        "fit_intercept": true,
+        "intercept_scaling": 1,
+        "l1_ratio": 0.0,
+        "max_iter": 2000,
+        "n_jobs": null,
+        "penalty": "deprecated",
+        "random_state": 42,
+        "solver": "lbfgs",
+        "tol": 0.0001,
+        "verbose": 0,
+        "warm_start": false
+      },
+      "segundos_fit": 0.03969109999889042,
+      "seleccionado": false,
+      "exactitud": 0.9731843575418995,
+      "exactitud_balanceada": 0.9377243772437724,
+      "precision": 0.8270676691729323,
+      "recall": 0.8943089430894309,
+      "f1": 0.859375,
+      "especificidad": 0.981139811398114,
+      "roc_auc": 0.971669716697167,
+      "matriz_confusion": [
+        [
+          2393,
+          46
+        ],
+        [
+          26,
+          220
+        ]
+      ]
+    },
+    {
+      "experimento": "Regresión logística",
+      "parametros": {
+        "C": 1.0,
+        "class_weight": "balanced",
+        "dual": false,
+        "fit_intercept": true,
+        "intercept_scaling": 1,
+        "l1_ratio": 0.0,
+        "max_iter": 2000,
+        "n_jobs": null,
+        "penalty": "deprecated",
+        "random_state": 42,
+        "solver": "lbfgs",
+        "tol": 0.0001,
+        "verbose": 0,
+        "warm_start": false
+      },
+      "segundos_fit": 0.04637580000053276,
+      "seleccionado": true,
+      "exactitud": 0.9743016759776536,
+      "exactitud_balanceada": 0.9401669016690166,
+      "precision": 0.8339622641509434,
+      "recall": 0.8983739837398373,
+      "f1": 0.8649706457925636,
+      "especificidad": 0.981959819598196,
+      "roc_auc": 0.9714380477138105,
+      "matriz_confusion": [
+        [
+          2395,
+          44
+        ],
+        [
+          25,
+          221
+        ]
+      ]
+    },
+    {
+      "experimento": "Regresión logística",
+      "parametros": {
+        "C": 10.0,
+        "class_weight": "balanced",
+        "dual": false,
+        "fit_intercept": true,
+        "intercept_scaling": 1,
+        "l1_ratio": 0.0,
+        "max_iter": 2000,
+        "n_jobs": null,
+        "penalty": "deprecated",
+        "random_state": 42,
+        "solver": "lbfgs",
+        "tol": 0.0001,
+        "verbose": 0,
+        "warm_start": false
+      },
+      "segundos_fit": 0.045690599999943515,
+      "seleccionado": false,
+      "exactitud": 0.9731843575418995,
+      "exactitud_balanceada": 0.9395518955189552,
+      "precision": 0.8246268656716418,
+      "recall": 0.8983739837398373,
+      "f1": 0.8599221789883269,
+      "especificidad": 0.980729807298073,
+      "roc_auc": 0.9713913805804724,
+      "matriz_confusion": [
+        [
+          2392,
+          47
+        ],
+        [
+          25,
+          221
+        ]
+      ]
+    }
+  ]
+}

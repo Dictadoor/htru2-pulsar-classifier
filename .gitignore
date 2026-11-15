@@ -10,3 +10,14 @@ __pycache__/
 datos_originales/
 datos_preparados/
 output/
+
+# Datos y modelos de la ejecución reproducible del examen.
+!Examen-MC-Grupo-7/datos_originales/
+!Examen-MC-Grupo-7/datos_originales/**
+!Examen-MC-Grupo-7/datos_preparados/
+!Examen-MC-Grupo-7/datos_preparados/**
+!Examen-MC-Grupo-7/datos_demo_sin_etiqueta.csv
+!Examen-MC-Grupo-7/modelo_historico/*.csv
+!Examen-MC-Grupo-7/modelo_historico/*.joblib
+!Examen-MC-Grupo-7/resultados/**/*.csv
+!Examen-MC-Grupo-7/resultados/**/*.joblib

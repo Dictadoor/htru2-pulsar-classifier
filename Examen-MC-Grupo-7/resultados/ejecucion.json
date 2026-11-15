@@ -1,0 +1,21 @@
+{
+  "python": "3.14.0",
+  "sklearn": "1.9.1",
+  "numpy": "2.4.4",
+  "pandas": "3.0.2",
+  "auditoria": {
+    "filas": 17898,
+    "columnas_requeridas": 9,
+    "celdas_vacias": 0,
+    "filas_duplicadas_exactas": 0
+  },
+  "dataset_sha256": "f2ad10d1da05ebd2fa6b4e610e314284e646d56663cc64b889506e3a1c59c814",
+  "segundos_ajuste": {
+    "RF original": null,
+    "RF modificado": 0.6786667999986093,
+    "Regresión logística": 0.04637580000053276,
+    "MLP profunda": 12.534507000000303
+  },
+  "modelo_elegido": "MLP profunda",
+  "limitacion": "Prueba histórica consultada en prácticas anteriores. Se conserva para comparar. La selección usa validación."
+}

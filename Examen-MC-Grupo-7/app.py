@@ -95,6 +95,142 @@ css = """
 h1 a,h2 a,h3 a,[data-testid="stHeaderActionElements"] {display:none !important;}
 @media (max-width:760px) {.block-container {padding-top:.6rem;}.universe-hero {min-height:210px;padding:1.35rem;border-radius:9px;}.pulsar-scene {flex-basis:120px;width:120px;height:150px;transform:scale(.72);transform-origin:center right;margin-left:-1.4rem;margin-right:-1rem;}.hero-description {font-size:.92rem;}}
 @media (prefers-reduced-motion:reduce) {.pulsar-beams,.pulsar-core,.pulsar-ring {animation:none;}}
+/* Escena decorativa del púlsar. */
+.universe-hero {
+  min-height:320px;
+  padding:2.4rem 2.5rem;
+  background:#101116;
+  border-color:#2a303a;
+  border-left-color:var(--accent);
+}
+.universe-hero::before {
+  content:"";
+  position:absolute;
+  inset:-25px;
+  pointer-events:none;
+  opacity:.36;
+  background-image:
+    radial-gradient(circle at 13% 19%,#aebbcf 0 1px,transparent 1.5px),
+    radial-gradient(circle at 42% 77%,#6c7b91 0 1px,transparent 1.5px),
+    radial-gradient(circle at 69% 13%,#6c7b91 0 1px,transparent 1.5px),
+    radial-gradient(circle at 78% 83%,#aebbcf 0 1px,transparent 1.5px),
+    radial-gradient(circle at 94% 35%,#6c7b91 0 1px,transparent 1.5px);
+  background-size:267px 193px,349px 283px,391px 239px,307px 307px,449px 317px;
+  animation:star-drift 40s ease-in-out infinite alternate;
+}
+.hero-copy {flex:1;max-width:680px;}
+.hero-title {font-size:clamp(2rem,3.7vw,3rem);line-height:1.1;}
+.hero-description {max-width:550px;}
+.hero-tag {background:#15171d;border-color:#2a303a;}
+.pulsar-scene {
+  flex:0 0 300px;
+  width:300px;
+  height:270px;
+  perspective:700px;
+  isolation:isolate;
+  transform:rotate(-13deg);
+  margin:-.75rem 0;
+}
+.pulsar-scene::before {
+  content:"";
+  position:absolute;
+  inset:30px;
+  border-radius:50%;
+  background:radial-gradient(ellipse,rgba(77,163,255,.13),transparent 68%);
+  animation:stellar-halo 5s ease-in-out infinite;
+}
+.pulsar-star {background:#91a9c4;box-shadow:none;opacity:.65;}
+.pulsar-orbit {
+  inset:0;
+  width:260px;
+  height:260px;
+  margin:auto;
+  border:1px solid rgba(122,166,214,.25);
+  border-radius:50%;
+  transform:rotateZ(-28deg) rotateX(68deg);
+  transform-style:preserve-3d;
+}
+.pulsar-orbit::after {
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius:50%;
+  border:1px solid transparent;
+  border-top-color:rgba(105,181,255,.85);
+  animation:orbital-trace 15s linear infinite;
+}
+.pulsar-orbit.orbit2 {
+  inset:0;
+  width:238px;
+  height:238px;
+  border-color:rgba(122,166,214,.2);
+  opacity:1;
+  transform:rotateZ(39deg) rotateX(69deg);
+}
+.pulsar-orbit.orbit2::after {animation-duration:22s;animation-direction:reverse;}
+.pulsar-orbit.orbit3 {
+  width:178px;
+  height:178px;
+  border-color:rgba(77,163,255,.12);
+  transform:rotateZ(4deg) rotateX(24deg);
+}
+.pulsar-orbit.orbit3::after {border-top-color:rgba(105,181,255,.35);animation-duration:30s;}
+.pulsar-beams {z-index:1;animation:beam-sweep 16s linear infinite;}
+.pulsar-beam {
+  left:-33px;
+  width:66px;
+  height:133px;
+  clip-path:polygon(50% 0,100% 100%,0 100%);
+  background:linear-gradient(to top,rgba(77,163,255,0),rgba(77,163,255,.38) 66%,rgba(169,219,255,.8));
+}
+.pulsar-beam.up {bottom:auto;top:0;transform:rotate(180deg);transform-origin:50% 0;}
+.pulsar-beam.down {top:0;transform:none;}
+.pulsar-core {
+  width:38px;
+  height:38px;
+  border:1px solid rgba(227,244,255,.9);
+  background:radial-gradient(circle at 33% 27%,#f1faff 0,#bce5ff 15%,#4da3ff 48%,#1b548a 83%,#0c2038 100%);
+  box-shadow:0 0 12px rgba(157,216,255,.7),0 0 38px rgba(77,163,255,.45),0 0 75px rgba(77,163,255,.14);
+  animation:core-pulse 3.6s ease-in-out infinite;
+}
+.pulsar-core::after {
+  content:"";
+  position:absolute;
+  inset:-7px;
+  border:1px solid rgba(132,201,255,.38);
+  border-radius:50%;
+}
+.pulsar-ring {width:48px;height:48px;border-color:rgba(123,195,255,.6);animation:ring-pulse 4.5s ease-out infinite;}
+.pulsar-ring.ring2 {animation-delay:-2.25s;}
+.hero-tags .hero-tag,.stButton button,.stDownloadButton button,[data-testid="stFileUploader"] section {
+  transition:background-color .2s ease,border-color .2s ease,box-shadow .2s ease;
+}
+.stButton button:hover,.stDownloadButton button:hover {
+  border-color:rgba(109,181,255,.65) !important;
+  box-shadow:0 0 0 1px rgba(77,163,255,.1);
+}
+@keyframes star-drift {to {transform:translate3d(12px,-8px,0);}}
+@keyframes orbital-trace {to {transform:rotate(360deg);}}
+@keyframes stellar-halo {0%,100% {opacity:.65;scale:.95;}50% {opacity:1;scale:1.06;}}
+@keyframes core-pulse {0%,100% {scale:.96;}50% {scale:1.04;}}
+@keyframes ring-pulse {0% {scale:.8;opacity:0;}15% {opacity:.5;}100% {scale:2.3;opacity:0;}}
+@media (max-width:900px) and (min-width:761px) {
+  .pulsar-scene {flex-basis:230px;width:230px;scale:.85;margin-left:-1.2rem;margin-right:-1rem;}
+}
+@media (max-width:760px) {
+  .universe-hero {flex-direction:column;align-items:flex-start;gap:.5rem;padding:1.5rem;}
+  .hero-copy {max-width:100%;}
+  .hero-title {font-size:2rem;}
+  .pulsar-scene {align-self:center;flex:0 0 220px;width:270px;height:220px;margin:0;transform:rotate(-13deg) scale(.85);transform-origin:center;}
+  .hero-description {font-size:.94rem;}
+}
+@media (prefers-reduced-motion:reduce) {
+  .universe-hero::before,.pulsar-scene::before,.pulsar-orbit::after,.pulsar-beams,.pulsar-core,.pulsar-ring {animation:none;}
+  .pulsar-beams {transform:rotate(25deg);}
+  .pulsar-ring {opacity:.2;}
+  .hero-tags .hero-tag,.stButton button,.stDownloadButton button,[data-testid="stFileUploader"] section {transition:none;}
+}
+
 </style>
 """
 st.markdown(css, unsafe_allow_html=True)
@@ -109,9 +245,9 @@ st.markdown(
       </div>
       <div class="pulsar-scene" role="img" aria-label="Animación de un púlsar con haces de luz giratorios">
         <span class="pulsar-star s1"></span><span class="pulsar-star s2"></span><span class="pulsar-star s3"></span><span class="pulsar-star s4"></span>
-        <div class="pulsar-orbit"></div><div class="pulsar-orbit orbit2"></div>
+        <div class="pulsar-orbit"></div><div class="pulsar-orbit orbit2"></div><div class="pulsar-orbit orbit3"></div>
         <div class="pulsar-beams"><div class="pulsar-beam up"></div><div class="pulsar-beam down"></div></div>
-        <div class="pulsar-ring"></div><div class="pulsar-core"></div>
+        <div class="pulsar-ring"></div><div class="pulsar-ring ring2"></div><div class="pulsar-core"></div>
       </div>
     </section>
     """,

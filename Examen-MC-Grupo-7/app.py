@@ -264,7 +264,6 @@ def load_model(model_name, version):
 
 
 selected_model = st.selectbox("Modelo para clasificar", list(MODELS), index=3)
-st.caption("La red profunda fue seleccionada por exactitud balanceada de validación. Puedes probar las cuatro alternativas.")
 
 
 st.markdown('<p class="section-kicker">Exploración</p><h2 class="section-heading">Clasifica un conjunto de datos</h2>', unsafe_allow_html=True)

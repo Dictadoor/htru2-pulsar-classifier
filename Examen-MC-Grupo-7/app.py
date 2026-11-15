@@ -75,6 +75,8 @@ css = """
 [data-testid="stVerticalBlockBorderWrapper"] {border-color:var(--line) !important;border-radius:10px !important;background-color:var(--surface) !important;}
 [data-testid="stFileUploader"] section {border:1px dashed var(--line) !important;border-radius:7px;background-color:var(--input) !important;}
 [data-testid="stFileUploader"] section {height:84px !important;min-height:84px !important;padding:10px 14px !important;box-sizing:border-box !important;display:flex !important;align-items:center !important;}
+[data-testid="stFileUploaderDropzoneInstructions"] > div > span {display:none !important;}
+[data-testid="stFileUploaderDropzoneInstructions"]::after {content:"__UPLOAD_LIMIT_MB__ MB por archivo - CSV";font-size:.875rem;line-height:1.6;color:var(--ink);}
 [data-testid="stFileUploader"] section:hover {border-color:var(--accent) !important;}
 [data-testid="stFileUploader"] label,[data-testid="stFileUploader"] span,[data-testid="stFileUploader"] small {color:var(--ink) !important;}
 [data-testid="stFileUploader"] section button {border:1px solid var(--accent) !important;border-radius:6px !important;background-color:var(--accent) !important;color:var(--accent-ink) !important;font-weight:700 !important;}
@@ -233,7 +235,10 @@ h1 a,h2 a,h3 a,[data-testid="stHeaderActionElements"] {display:none !important;}
 
 </style>
 """
-st.markdown(css, unsafe_allow_html=True)
+st.markdown(
+    css.replace("__UPLOAD_LIMIT_MB__", str(st.get_option("server.maxUploadSize"))),
+    unsafe_allow_html=True,
+)
 
 st.markdown(
     """

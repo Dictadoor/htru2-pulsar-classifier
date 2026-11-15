@@ -1,0 +1,25 @@
+services:
+  htru2-universo:
+    build: .
+    container_name: htru2-universo
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp:size=32m
+    networks:
+      - coolify
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=coolify"
+      - "traefik.http.routers.htru2-universo.rule=Host(`htru2.bananacorp.dev`) && PathPrefix(`/universo`)"
+      - "traefik.http.routers.htru2-universo.entrypoints=https"
+      - "traefik.http.routers.htru2-universo.priority=100"
+      - "traefik.http.routers.htru2-universo.tls=true"
+      - "traefik.http.routers.htru2-universo.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.htru2-universo.service=htru2-universo"
+      - "traefik.http.services.htru2-universo.loadbalancer.server.port=8080"
+
+networks:
+  coolify:
+    external: true
+    name: coolify

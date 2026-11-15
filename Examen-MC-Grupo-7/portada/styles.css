@@ -19,14 +19,14 @@ button:focus-visible,a:focus-visible {outline:2px solid #70b7ff;outline-offset:6
 .brand-symbol::after {content:"";position:absolute;inset:-5px 6px;border-left:1px solid #6bb4ff;transform:rotate(30deg);}
 .header-link {font-size:13px;color:#c1cad7;display:flex;gap:16px;align-items:center;transition:color .2s;}
 .header-link:hover {color:#fff;}
-.header-link span {font-size:20px;color:#7cbbff;}
+.link-arrow {display:block;flex:0 0 20px;width:20px;height:20px;}
+.header-link .link-arrow {color:#7cbbff;}
 .intro {position:fixed;z-index:1;left:9vw;top:50%;transform:translateY(-46%);max-width:620px;pointer-events:none;}
 h1 {margin:0;font-size:clamp(55px,6.7vw,108px);line-height:1.02;letter-spacing:-.065em;font-weight:500;text-wrap:balance;}
 .title-dot {color:#6cb7ff;}
 .intro p {margin:27px 0 34px;font-size:15px;line-height:1.8;color:#a7b2c3;letter-spacing:.005em;}
 .primary-link {display:inline-flex;align-items:center;justify-content:space-between;gap:29px;padding:16px 21px;background:#e7f1fc;color:#102239;font-size:13px;font-weight:700;border:1px solid rgba(255,255,255,.7);border-radius:5px;pointer-events:auto;transition:background .2s,box-shadow .2s;}
 .primary-link:hover {background:#fff;box-shadow:0 0 30px rgba(96,170,255,.2);}
-.primary-link span {font-size:21px;font-weight:400;line-height:1;}
 .scene-status {position:fixed;bottom:85px;left:5.2vw;max-width:340px;font-size:12px;line-height:1.6;color:#a7b2c3;z-index:3;}
 .scene-status[hidden] {display:none;}
 .interface {transition:opacity .45s,visibility .45s;}

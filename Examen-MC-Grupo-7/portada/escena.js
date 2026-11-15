@@ -2,9 +2,6 @@ import * as THREE from './vendor/three.module.js';
 
 const container = document.querySelector('#universe');
 const status = document.querySelector('#scene-status');
-const pauseButton = document.querySelector('#pause');
-const presentationButton = document.querySelector('#presentation');
-const exitButton = document.querySelector('#exit-presentation');
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 
 let renderer;
@@ -36,7 +33,6 @@ function initializeScene() {
 
   let paused = reducedMotion.matches;
   let time = 0;
-  let presentation = false;
   let dragging = false;
   let lastPointer = null;
   let spinOffset = 0;
@@ -248,48 +244,15 @@ function initializeScene() {
     camera.updateProjectionMatrix();
     renderer.setSize(width, height);
     const mobile = width <= 600;
-    group.position.set(mobile ? .08 : presentation ? 0 : 1.8, mobile && !presentation ? 1.3 : 0, 0);
+    group.position.set(mobile ? .08 : 1.8, mobile ? 1.3 : 0, 0);
     const scale = mobile ? .72 : Math.min(1.16, width / 1440);
-    group.scale.setScalar(presentation ? scale * 1.12 : scale);
+    group.scale.setScalar(scale);
   }
 
-  function updatePauseButton() {
-    pauseButton.textContent = paused ? 'Reanudar animación' : 'Pausar animación';
-    pauseButton.setAttribute('aria-pressed', String(paused));
-  }
-
-  function togglePause() {
-    paused = !paused;
-    updatePauseButton();
-  }
-
-  function setPresentation(active) {
-    presentation = active;
-    document.body.classList.toggle('presenting', active);
-    exitButton.hidden = !active;
-    presentationButton.setAttribute('aria-pressed', String(active));
-    resize();
-    if (active) exitButton.focus({ preventScroll: true });
-    else presentationButton.focus({ preventScroll: true });
-  }
-
-  pauseButton.addEventListener('click', togglePause);
-  presentationButton.addEventListener('click', async () => {
-    setPresentation(true);
-    try { await document.documentElement.requestFullscreen?.(); } catch { /* La escena funciona dentro de la ventana. */ }
-  });
-  exitButton.addEventListener('click', async () => {
-    setPresentation(false);
-    if (document.fullscreenElement) await document.exitFullscreen();
-  });
-  document.addEventListener('fullscreenchange', () => {
-    if (!document.fullscreenElement && presentation) setPresentation(false);
-  });
   document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && presentation) setPresentation(false);
     if (event.code === 'Space' && event.target === document.body) {
       event.preventDefault();
-      togglePause();
+      paused = !paused;
     }
   });
 
@@ -313,7 +276,6 @@ function initializeScene() {
   container.addEventListener('pointerleave', () => { if (!dragging) target.set(0, 0); });
   reducedMotion.addEventListener('change', event => {
     paused = event.matches;
-    updatePauseButton();
   });
   window.addEventListener('resize', resize);
 
@@ -366,7 +328,6 @@ function initializeScene() {
     status.hidden = false;
     status.textContent = 'La escena 3D se interrumpió. Recarga la página para recuperarla.';
   });
-  updatePauseButton();
   resize();
   start();
 }

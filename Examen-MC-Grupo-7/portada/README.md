@@ -14,13 +14,9 @@ py -m http.server 8511 --bind 127.0.0.1
 
 Visitar http://127.0.0.1:8511/. Las bibliotecas y la fuente acompañan la carpeta para cargar la escena sin servicios externos. El enlace al clasificador abre el dashboard público.
 
-## Controles
+## Interacción
 
-- Arrastrar la escena cambia su orientación.
-- «Pausar animación» detiene la evolución de la escena.
-- «Modo exposición» centra el púlsar, oculta el contenido de la portada y solicita pantalla completa cuando el navegador lo permite.
-- «Salir de exposición» devuelve la portada. Escape también permite salir.
-- La preferencia de movimiento reducido inicia la escena en pausa. El visitante puede reanudarla.
+Arrastrar la escena cambia su orientación. La barra espaciadora pausa o reanuda la animación cuando el foco está en la página. La preferencia de movimiento reducido inicia la escena en pausa. La portada presenta la escena con acceso al clasificador.
 
 El navegador necesita WebGL 2. Si falla la inicialización, la portada muestra un mensaje y conserva el enlace al clasificador.
 

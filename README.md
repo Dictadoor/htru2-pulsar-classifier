@@ -8,7 +8,7 @@ El código actualizado, los datos, los cuatro modelos entrenados y sus resultado
 
 El dashboard permite seleccionar cualquiera de los cuatro modelos. La MLP aparece como opción inicial por su exactitud balanceada de validación. [Abrir el sistema web](https://htru2.bananacorp.dev).
 
-La [portada inmersiva](https://htru2.bananacorp.dev/universo/) incluye un púlsar 3D interactivo y modo exposición. Su código y sus instrucciones están en [Examen-MC-Grupo-7/portada](Examen-MC-Grupo-7/portada).
+La [portada inmersiva](https://htru2.bananacorp.dev/universo/) incluye un púlsar 3D interactivo. Su código y sus instrucciones están en [Examen-MC-Grupo-7/portada](Examen-MC-Grupo-7/portada).
 
 ## Práctica inicial
 

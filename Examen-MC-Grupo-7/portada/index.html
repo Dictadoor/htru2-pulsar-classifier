@@ -7,7 +7,7 @@
   <meta name="description" content="Explora una visualización 3D de un púlsar y accede al clasificador de candidatos HTRU2.">
   <title>HTRU2 · La señal de un púlsar</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2305080e'/%3E%3Ccircle cx='16' cy='16' r='8' fill='%236bb4ff'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=2">
 </head>
 <body>
   <div id="universe" aria-label="Visualización artística interactiva de un púlsar azul en el espacio" role="img"></div>
@@ -24,16 +24,7 @@
     <a class="primary-link" href="https://htru2.bananacorp.dev/">Entrar al clasificador <span aria-hidden="true">↗</span></a>
   </main>
 
-  <footer class="scene-footer">
-    <div class="scene-controls">
-      <button id="presentation" type="button" aria-pressed="false">Modo exposición <span aria-hidden="true">⛶</span></button>
-      <button id="pause" type="button" aria-pressed="false">Pausar animación</button>
-    </div>
-    <span class="drag-hint interface">Arrastra para explorar</span>
-    <span class="art-label interface">Visualización artística</span>
-  </footer>
-  <button id="exit-presentation" type="button" hidden>Salir de exposición <span aria-hidden="true">↙</span></button>
   <p id="scene-status" class="scene-status" role="status">Preparando el universo…</p>
-  <script type="module" src="escena.js"></script>
+  <script type="module" src="escena.js?v=2"></script>
 </body>
 </html>

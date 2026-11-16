@@ -1,6 +1,6 @@
 """Compara tres modelos ML y una red profunda sobre HTRU2.
 
-Ejecutar desde la carpeta de entrega: python codigo/entrenar_examen.py
+Ejecutar desde la carpeta de entrega: python codigo/entrenar_modelos.py
 """
 from __future__ import annotations
 

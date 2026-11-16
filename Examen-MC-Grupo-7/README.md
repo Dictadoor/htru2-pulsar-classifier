@@ -16,8 +16,8 @@ En Linux, crear el entorno con `python3.14 -m venv .venv` y usar `.venv/bin/pyth
 ## Ejecutar el experimento
 
 ```powershell
-.\.venv\Scripts\python.exe codigo\entrenar_examen.py
-.\.venv\Scripts\python.exe codigo\verificar_examen.py
+.\.venv\Scripts\python.exe codigo\entrenar_modelos.py
+.\.venv\Scripts\python.exe codigo\verificar_resultados.py
 ```
 
 El entrenamiento genera las métricas de las tres particiones, las curvas ROC individuales y comparadas, las matrices de confusión y las curvas de aprendizaje de la red. El verificador recalcula las doce evaluaciones y comprueba las predicciones de los modelos guardados. Los resultados de la ejecución utilizada en el informe acompañan esta carpeta.
@@ -55,10 +55,10 @@ Las curvas de la red muestran exactitud, exactitud balanceada y entropía cruzad
 
 ## Estructura
 
-- `codigo/entrenar_examen.py` construye y compara los cuatro modelos.
+- `codigo/entrenar_modelos.py` construye y compara los cuatro modelos.
 - `codigo/comparacion_ml.py` contiene la preparación de particiones, métricas y selección de configuraciones ML.
 - `codigo/modelo_random_forest.py` contiene las variables y la validación del dataset.
-- `codigo/verificar_examen.py` comprueba las salidas y los modelos guardados.
+- `codigo/verificar_resultados.py` comprueba las salidas y los modelos guardados.
 - `datos_originales/` conserva los archivos de origen y su documentación.
 - `datos_preparados/` contiene el CSV con encabezados que consume el programa.
 - `modelo_historico/` conserva el bosque original y sus resultados de referencia.
